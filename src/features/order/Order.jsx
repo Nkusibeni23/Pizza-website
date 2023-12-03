@@ -83,7 +83,6 @@ function Order() {
     <OrderItem item={item} key={item.id}/>
   ))}
 </ul>
-
       <div className="space-y-2 bg-stone-300 py-5 px-6 rounded-xl">
         <p className="text-sm font-medium text-stone-600">Price pizza: {formatCurrency(orderPrice)}</p>
         {priority && <p className="text-sm font-medium text-stone-600">Price priority: {formatCurrency(priorityPrice)}</p>}
