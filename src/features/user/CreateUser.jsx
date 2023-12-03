@@ -1,4 +1,6 @@
+/* eslint-disable react/jsx-no-undef */
 import { useState } from 'react';
+import Button from "../../ui/Button";
 
 function CreateUser() {
   const [username, setUsername] = useState('');
@@ -18,12 +20,12 @@ function CreateUser() {
         onChange={(e) => setUsername(e.target.value)
         }
         required
-        className="w-72 h-8 rounded-md"
+        className="w-72 input mb-3"
       />
 
       {username !== '' && (
         <div>
-          <button>Start ordering</button>
+          <Button>Start ordering</Button>
         </div>
       )}
     </form>

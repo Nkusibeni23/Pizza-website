@@ -1,7 +1,9 @@
+/* eslint-disable react-refresh/only-export-components */
 /* eslint-disable no-unused-vars */
 import { useState } from "react";
 import { Form, redirect, useActionData, useNavigation } from "react-router-dom";
 import { createOrder } from "../../services/apiRestaurant";
+import Button from "../../ui/Button";
 
 // https://uibakery.io/regex-library/phone-number
 const isValidPhone = (str) =>
@@ -80,9 +82,9 @@ function CreateOrder() {
 
         <div>
           <input type="hidden" name="cart" value={JSON.stringify(cart)} />
-          <button disabled={isSubmitting} className=" bg-yellow-400 uppercase font-semibold rounded-lg text-stone-800 py-3 px-4 inline-block tracking-wide hover:bg-yellow-300 transition-colors duration-300 focus:outline-none focus:ring focus:ring-yellow-300 focus: ring-offset-2">
+          <Button disabled={isSubmitting}>
             {isSubmitting ? "Placing Order ..." : "Order Now"}
-          </button>
+          </Button>
         </div>
       </Form>
     </div>
