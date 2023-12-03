@@ -44,31 +44,31 @@ function CreateOrder() {
   const cart = fakeCart;
 
   return (
-    <div>
-      <h2>Ready to order? Lets go!</h2>
+    <div className="py-6 px-4">
+      <h2 className="text-xl font-semibold mb-8">Ready to order? Lets go!</h2>
 
       {/* <Form method="POST" action="order/new"> */}
       <Form method="POST">
-        <div>
-          <label>First Name</label>
-          <input type="text" name="customer" required  className="input"/>
-        </div>
-        <div>
-          <label>Phone number</label>
-          <div>
-            <input type="tel" name="phone" required  className="input"/>
-          </div>
-          {formErrors?.phone && <p>{formErrors.phone}</p>}
+        <div className="mb-5 flex gap-2 flex-col sm:flex-row sm:items-center">
+          <label className="sm:basis-40">First Name</label>
+          <input type="text" name="customer" required  className="input grow"/>
         </div>
 
-        <div>
-          <label>Address</label>
-          <div>
-            <input type="text" name="address" required className="input" />
+        <div className="mb-5 flex gap-2 flex-col sm:flex-row sm:items-center"> 
+          <label className="sm:basis-40">Phone number</label>
+          <div className="grow">
+            <input type="tel" name="phone" required  className="input w-full"/>
+          {formErrors?.phone && <p className="text-xs font-medium mt-2 bg-red-200 text-red-700 p-2 rounded-3xl">{formErrors.phone}</p>}
+        </div>
+        </div>
+        <div className="mb-5 flex gap-2 flex-col sm:flex-row sm:items-center">
+          <label className="sm:basis-40">Address</label>
+          <div className="grow">
+            <input type="text" name="address" required className="input w-full" />
           </div>
         </div>
 
-        <div>
+        <div className="mb-12 flex gap-5 items-center">
           <input
             type="checkbox"
             name="priority"
@@ -77,7 +77,7 @@ function CreateOrder() {
             // value={withPriority}
             // onChange={(e) => setWithPriority(e.target.checked)}
           />
-          <label htmlFor="priority">Want to yo give your order priority?</label>
+          <label htmlFor="priority" className="font-medium">Want to yo give your order priority?</label>
         </div>
 
         <div>
