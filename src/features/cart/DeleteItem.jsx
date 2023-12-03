@@ -5,7 +5,6 @@ import { deleteItem } from "./cartSlice";
 
 export default function DeleteItem({id}) {
     const dispatch = useDispatch()
-    console.log(id)
   return (
     <Button type="small" onClick={()=> dispatch(deleteItem(id))}>Delete</Button>
   )

@@ -1,4 +1,6 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import { createSlice } from "@reduxjs/toolkit";
+
 
 const initialState = {
     cart: [],
@@ -25,19 +27,29 @@ const cartSlice = createSlice({
             // payload = id
         state.cart = state.cart.filter((item) => item.id !== action.payload);
         },
-        increaseItemQuantity:(state, action) => {
-            // payload = id
-            const item = state.cart.find((item) => item.id === action.payload);
-            item.quantity++;
-            item.totalPrice = item.quantity * item.unitPrice;
+        increaseItemQuantity: (state, action) => {
+            const { id } = action.payload;
+            const item = state.cart.find((item) => item.id === id);
+            if (item) {
+              item.quantity++;
+              item.totalPrice = item.quantity * item.unitPrice;
+            }
+          },
+
+          decreaseItemQuantity: (state, action) => {
+            const { id } = action.payload;
+            const item = state.cart.find((item) => item.id === id);
+            if (item) {
+                item.quantity--;
+                item.totalPrice = item.quantity * item.unitPrice;
+            }
+            // if (item.quantity === 0) {
+            //     dispatch(deleteItem(id)); // Use dispatch to trigger the deleteItem action
+            // }
+
+            if(item.quantity === 0) cartSlice.caseReducers.deleteItem(state.action);
         },
-        decreaseItemQuantity:(state, action) => {
-            // payload = id
-            const item = state.cart.find((item) => item.id === action.payload);
-            item.quantity--;
-            item.totalPrice = item.quantity * item.unitPrice;
-        },
-      
+        
         clearCart: (state) => {
             state.cart = [];
         },
